@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/ros/humble/include/rclcpp/",
+                "/opt/ros/humble/include/rcl/",
+                "/opt/ros/humble/include/rcutils/",
+                "/opt/ros/humble/include/rmw/",
+                "/opt/ros/humble/include/rosidl_runtime_c/",
+                "/opt/ros/humble/include/rosidl_runtime_cpp/",
+                "/opt/ros/humble/include/rosidl_typesupport_introspection_cpp/",
+                "/opt/ros/humble/include/rosidl_typesupport_introspection_c/",
+                "/opt/ros/humble/include/std_msgs/",
+                "/opt/ros/humble/include/std_srvs/",
+                "/opt/ros/humble/include/tracetools/",
+                "/opt/ros/humble/include/rcl_yaml_param_parser/",
+                "/opt/ros/humble/include/rosidl_typesupport_interface/",
+                "/opt/ros/humble/include/rcpputils/",
+                "/opt/ros/humble/include/**",
+                "${workspaceFolder}/ros2_ws/install/tutorial_interfaces/include/tutorial_interfaces"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
