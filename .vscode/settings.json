@@ -4,5 +4,6 @@
     "ros.distro": "humble",
     "files.associations": {
         "functional": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/wxf/workspace/ros2_tutorials/ros2_ws/src/learning_node"
 }
