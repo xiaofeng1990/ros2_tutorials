@@ -1,0 +1,8 @@
+digraph G {
+node [shape=box];
+"base_linek" [label="base_linek"];
+"imu_linek" [label="imu_linek"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_linek" -> "imu_joint" [label="xyz: 0 0 0.03 \nrpy: 0 -0 0"]
+"imu_joint" -> "imu_linek"
+}
