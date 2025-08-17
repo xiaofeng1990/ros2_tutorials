@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find urdf_description)/urdf/fishbot/common_inertia.xacro" />
+    <xacro:macro name="base_xacro" params="length radius">
+        <link name="base_footprint_link" />  
+        <!-- 定义机器人身体部分 -->
+        <link name="base_link">
+            <!-- 定义外观描述 -->
+            <visual>
+                <!-- 沿着自己的几何中心的偏移和旋转 -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <!-- 几何形状 -->
+                <geometry>
+                    <!-- 圆柱体 半径 0.10，高度0.12 -->
+                    <cylinder length="${length}" radius="${radius}" />
+                </geometry>
+                <!-- 定义材质和颜色 0.5半透明-->
+                <material name="white">
+                    <color rgba="1.0 1.0 1.0 0.5" />
+                </material>
+            </visual>
+             <!--碰撞属性  -->
+             <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <!-- 几何形状 -->
+                <geometry>
+                    <!-- 圆柱体 半径 0.10，高度0.12 -->
+                    <cylinder length="${length}" radius="${radius}" />
+                </geometry>
+                <!-- 定义材质和颜色 0.5半透明-->
+                <material name="white">
+                    <color rgba="1.0 1.0 1.0 0.5" />
+                </material>
+            </collision>
+            <xacro:cylinder_inertia m="1.0" r="${radius}" h="${length}" />
+        </link>
+
+        <joint name="base_footprint2base_link" type="fixed">
+            <origin xyz="0 0 ${length/2+0.032-0.001}" rpy="0 0 0" />
+            <parent link="base_footprint_link" />
+            <child link="base_link" />
+        </joint>
+    </xacro:macro>
+</robot>

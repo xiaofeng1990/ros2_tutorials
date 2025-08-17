@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <xacro:include filename="$(find urdf_description)/urdf/fishbot/common_inertia.xacro" />
+    <xacro:macro name="caster_xacro" params="caster_name xyz">
+        <!-- 机器人的caster部件，惯性测量单元 -->
+        <link name="${caster_name}_link">
+            <!-- 定义外观描述 -->
+            <visual>
+                <!-- 沿着自己的几何中心的偏移和旋转 -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <!-- 几何形状 -->
+                <geometry>
+                <!-- shpere --> 
+                    <sphere radius="0.016"/>
+                </geometry>
+                <!-- 定义材质和颜色 0.5半透明-->
+                <material name="yellow">
+                    <color rgba="1.0 1.0 0.0 0.8" />
+                </material>
+            </visual> 
+            <!-- 定义惯性参数 -->
+            <collision>
+                <!-- 沿着自己的几何中心的偏移和旋转 -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <!-- 几何形状 -->
+                <geometry>
+                <!-- shpere --> 
+                    <sphere radius="0.016"/>
+                </geometry>
+                <!-- 定义材质和颜色 0.5半透明-->
+                <material name="yellow">
+                    <color rgba="1.0 1.0 0.0 0.8" />
+                </material>
+            </collision>
+            <xacro:sphere_inertia m="0.01" r="0.016" />
+        </link>
+
+        <!-- 定义关节 -->
+        <joint name="${caster_name}_joint" type="fixed">
+            <!-- 关节连接的父链接 -->
+            <parent link="base_link" />
+            <!-- 关节连接的子链接 -->
+            <child link="${caster_name}_link" />
+            <!-- 关节的位置和旋转 -->
+            <origin xyz="${xyz}" rpy="0 0 0" />
+            <!-- 围绕y轴旋转 -->
+        </joint>
+    </xacro:macro>
+</robot>

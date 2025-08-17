@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <xacro:include filename="$(find urdf_description)/urdf/fishbot/common_inertia.xacro" />
+    <xacro:macro name="imu_xacro" params="xyz">
+        <!-- 机器人的IMU部件，惯性测量单元 -->
+        <link name="imu_link">
+            <!-- 定义外观描述 -->
+            <visual>
+                <!-- 沿着自己的几何中心的偏移和旋转 -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <!-- 几何形状 -->
+                <geometry>
+                <!-- box -->
+                    <box size="0.02 0.02 0.02" />
+                </geometry>
+                <!-- 定义材质和颜色 0.5半透明-->
+                <material name="white">
+                    <color rgba="0.0 0.0 0.0 0.5" />
+                </material>
+            </visual> 
+            <collision>
+                <!-- 沿着自己的几何中心的偏移和旋转 -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <!-- 几何形状 -->
+                <geometry>
+                <!-- box -->
+                    <box size="0.02 0.02 0.02" />
+                </geometry>
+                <!-- 定义材质和颜色 0.5半透明-->
+                <material name="white">
+                    <color rgba="0.0 0.0 0.0 0.5" />
+                </material>
+            </collision>
+            <xacro:box_inertia m="0.05" w="0.02" h="0.02" d="0.02" />
+        </link>
+
+        <!-- 定义关节 -->
+        <joint name="imu_joint" type="fixed">
+            <!-- 关节连接的父链接 -->
+            <parent link="base_link" />
+            <!-- 关节连接的子链接 -->
+            <child link="imu_link" />
+            <!-- 关节的位置和旋转 -->
+            <origin xyz="${xyz}" rpy="0 0 0" />
+        </joint>
+    </xacro:macro>
+</robot>
